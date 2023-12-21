@@ -1,0 +1,2035 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/21/2023 11:56:26 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-43FVI29"
+  DTS:CreatorName="DESKTOP-43FVI29\Bartek"
+  DTS:DTSID="{5BA9F22A-A9A0-45E5-A74F-A0BAEDB08D70}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="1045"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="76"
+  DTS:VersionGUID="{A3D91611-A19C-45BB-A460-2F1770DCA40F}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb1]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{C8EF9A71-5B97-49F8-931D-513B259BA562}"
+      DTS:ObjectName="DESKTOP-43FVI29.LandslidesDb1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-43FVI29;Initial Catalog=LandslidesDb;Integrated Security=True;Encrypt=False;Application Name=SSIS-Package-{C8EF9A71-5B97-49F8-931D-513B259BA562}DESKTOP-43FVI29.LandslidesDb1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{FA752082-08EB-4CF2-984C-38BBA556EBE4}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.16.0;Data Source=C:\Users\Bartek\Desktop\Projekt Inżynierski\modified data.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Landslides_csv_import]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{C8BA624A-7F79-446F-AFD8-472FDDDFD9DB}"
+      DTS:ObjectName="Landslides_csv_import">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="1045"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\Bartek\Desktop\Projekt Inżynierski\GlobalLandslideDataset.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="source_name"
+              DTS:DTSID="{D7D30462-9279-4B08-8D19-4017E43D129E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="source_link"
+              DTS:DTSID="{877AB321-7CB0-42A4-BF2D-F5EFE5ED2AD8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_id"
+              DTS:DTSID="{B33F1DFD-E33F-4477-8A71-E1609F0D2A9D}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_date"
+              DTS:DTSID="{3FFE111D-55CA-4E34-8C2A-5E25C4502886}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_time"
+              DTS:DTSID="{530C2A7E-A3F2-4B4E-BC6A-EB1C27FE86E2}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_title"
+              DTS:DTSID="{CBF7695E-2053-45CB-A7F6-60AD49BD6DBC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_description"
+              DTS:DTSID="{17C2B95E-095E-4903-AA45-08E3C29AA9D0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="location_description"
+              DTS:DTSID="{1447FC9C-4269-4FB9-8B3B-0A857CF10488}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="location_accuracy"
+              DTS:DTSID="{66BC9EED-D14C-4C38-9C77-A3E02DA0DD96}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="landslide_category"
+              DTS:DTSID="{7C01471D-9461-4A6E-B100-2CCF25762731}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="landslide_trigger"
+              DTS:DTSID="{86CF84D0-4EAB-4A51-8DB2-39173A51AD21}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="landslide_size"
+              DTS:DTSID="{88E0E660-5835-49A4-BD77-90592CC734EC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="landslide_setting"
+              DTS:DTSID="{0335F6CE-06BC-42A4-8916-36220BA276BC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="fatality_count"
+              DTS:DTSID="{B18A4E7A-7105-43E4-BA0B-D125A27D9249}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="injury_count"
+              DTS:DTSID="{34E0BF86-DD2D-4432-802B-B06F6B97864F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="storm_name"
+              DTS:DTSID="{E5505E5E-B279-4343-8196-F21480D676F4}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="photo_link"
+              DTS:DTSID="{3EB55473-B325-4FD9-AA66-F52EB4E9F000}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="notes"
+              DTS:DTSID="{6DCB8151-37E7-4B83-A03D-A36F1220DAAE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_import_source"
+              DTS:DTSID="{F120B760-BB05-4227-A2D6-1C83EE2AC7FD}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="event_import_id"
+              DTS:DTSID="{32CE636C-E584-4F9A-8C97-861E672661D0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="country_name"
+              DTS:DTSID="{CACE018C-3BF2-4CB4-9254-7967A5D47345}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="country_code"
+              DTS:DTSID="{2CDDC68D-8A6C-4AC3-924E-4D910DB11EF0}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="admin_division_name"
+              DTS:DTSID="{FA9B1F42-B757-4713-AF7D-CD14E271D693}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="admin_division_population"
+              DTS:DTSID="{F8D82DD0-3DFE-4158-8329-7D6B1B4A301C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="gazeteer_closest_point"
+              DTS:DTSID="{A9259987-721D-4D52-A5E0-79C3E7B3E54F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="gazeteer_distance"
+              DTS:DTSID="{B9BB0C91-6B12-45CA-A0B6-18E85E50FB3F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="submitted_date"
+              DTS:DTSID="{818D51B0-CF1B-4314-AF52-AAAD99CBBEA7}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="created_date"
+              DTS:DTSID="{0291281E-E6C9-49A6-AC30-2A21FF4FF2C6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="last_edited_date"
+              DTS:DTSID="{2F79F09D-06CA-4618-8622-3EF9FC701304}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x003B_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="longitude"
+              DTS:DTSID="{F6E6DFFE-D3D8-4924-AB67-B35FB3F94EFE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="latitude"
+              DTS:DTSID="{8E6AA9AF-9558-4F73-9B39-BCBDBF56CF78}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{5FB4CF02-A742-40CF-A918-0F613FC8B61D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[longitude]"
+                      cachedDataType="r8"
+                      cachedName="longitude"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[latitude]"
+                      cachedDataType="r8"
+                      cachedName="latitude"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[admin_division_population]"
+                      cachedDataType="r8"
+                      cachedName="admin_division_population"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of longitude]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of longitude]"
+                      name="Copy of longitude"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[longitude]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of latitude]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of latitude]"
+                      name="Copy of latitude"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of admin_division_population]"
+                      dataType="ui4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of admin_division_population]"
+                      name="Copy of admin_division_population"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\detail"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="detail"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"detail"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\detail.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb1]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[id]"
+                      cachedDataType="r8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[event_description]"
+                      cachedDataType="nText"
+                      cachedName="event_description"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[event_description]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[event_description]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[landslide_category]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="landslide_category"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_category]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_category]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[landslide_trigger]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="landslide_trigger"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_trigger]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_trigger]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[landslide_size]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="landslide_size"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_size]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_size]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[landslide_setting]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="landslide_setting"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_setting]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_setting]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[fatality_count]"
+                      cachedDataType="r8"
+                      cachedName="fatality_count"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[fatality_count]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[fatality_count]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[injury_count]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="injury_count"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[injury_count]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[injury_count]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[storm_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="storm_name"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[storm_name]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[storm_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].Columns[photo_link]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="photo_link"
+                      externalMetadataColumnId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[photo_link]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[photo_link]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[event_description]"
+                      dataType="wstr"
+                      length="2147483647"
+                      name="event_description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_category]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_trigger]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_trigger" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_size]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_size" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[landslide_setting]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_setting" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[fatality_count]"
+                      dataType="i4"
+                      name="fatality_count" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[injury_count]"
+                      dataType="i4"
+                      name="injury_count" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[storm_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="storm_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[photo_link]"
+                      dataType="wstr"
+                      length="255"
+                      name="photo_link" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\detail.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\detail.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\detail.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\detail.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\detail.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Details"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Details"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Details$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Details.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Details.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[event_description]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[event_description]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[event_description]"
+                      name="event_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_category]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_category]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_category]"
+                      name="landslide_category"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_trigger]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_trigger]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_trigger]"
+                      name="landslide_trigger"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_size]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_size]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_size]"
+                      name="landslide_size"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_setting]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_setting]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[landslide_setting]"
+                      name="landslide_setting"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[fatality_count]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[fatality_count]"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[fatality_count]"
+                      name="fatality_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[injury_count]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[injury_count]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[injury_count]"
+                      name="injury_count"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[storm_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[storm_name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[storm_name]"
+                      name="storm_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[photo_link]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[photo_link]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Output].Columns[photo_link]"
+                      name="photo_link"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[event_description]"
+                      dataType="nText"
+                      name="event_description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_category]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_category" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_trigger]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_trigger" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_size]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_size" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[landslide_setting]"
+                      dataType="wstr"
+                      length="255"
+                      name="landslide_setting" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[fatality_count]"
+                      dataType="r8"
+                      name="fatality_count" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[injury_count]"
+                      dataType="wstr"
+                      length="255"
+                      name="injury_count" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[storm_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="storm_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Output].ExternalColumns[photo_link]"
+                      dataType="wstr"
+                      length="255"
+                      name="photo_link" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[id]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[event_description]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[event_description]"
+                      name="event_description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_category]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_category]"
+                      name="landslide_category" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_trigger]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_trigger]"
+                      name="landslide_trigger" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_size]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_size]"
+                      name="landslide_size" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_setting]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[landslide_setting]"
+                      name="landslide_setting" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[fatality_count]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[fatality_count]"
+                      name="fatality_count" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[injury_count]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[injury_count]"
+                      name="injury_count" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[storm_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[storm_name]"
+                      name="storm_name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[photo_link]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[photo_link]"
+                      name="photo_link" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\location"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="location"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"location"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\location.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb1]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[id]"
+                      cachedDataType="r8"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[location_description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="location_description"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[location_description]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[location_description]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[location_accuracy]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="location_accuracy"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[location_accuracy]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[location_accuracy]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[country_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="country_name"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[country_name]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[country_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[admin_division_name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="admin_division_name"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_name]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[Copy of longitude]"
+                      cachedDataType="decimal"
+                      cachedName="Copy of longitude"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[longitude]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of longitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[Copy of latitude]"
+                      cachedDataType="decimal"
+                      cachedName="Copy of latitude"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[latitude]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of latitude]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[Copy of admin_division_population]"
+                      cachedDataType="ui4"
+                      cachedName="Copy of admin_division_population"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_population]"
+                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of admin_division_population]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[location_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="location_description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[location_accuracy]"
+                      dataType="wstr"
+                      length="255"
+                      name="location_accuracy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[country_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="country_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="admin_division_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_population]"
+                      dataType="i4"
+                      name="admin_division_population" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[longitude]"
+                      dataType="numeric"
+                      name="longitude"
+                      precision="10"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[latitude]"
+                      dataType="numeric"
+                      name="latitude"
+                      precision="9"
+                      scale="6" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\location.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\location.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\location.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\location.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\location.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Locations"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Locations"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Loactions$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Locations.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[id]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[location_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[location_description]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[location_description]"
+                      name="location_description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[location_accuracy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[location_accuracy]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[location_accuracy]"
+                      name="location_accuracy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[country_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[country_name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[country_name]"
+                      name="country_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[admin_division_name]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_name]"
+                      name="admin_division_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[admin_division_population]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]"
+                      name="admin_division_population"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[longitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[longitude]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[longitude]"
+                      name="longitude"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[latitude]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]"
+                      name="latitude"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[id]"
+                      dataType="r8"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[location_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="location_description" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[location_accuracy]"
+                      dataType="wstr"
+                      length="255"
+                      name="location_accuracy" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[country_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="country_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[admin_division_name]"
+                      dataType="wstr"
+                      length="255"
+                      name="admin_division_name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[admin_division_population]"
+                      dataType="r8"
+                      name="admin_division_population" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[longitude]"
+                      dataType="r8"
+                      name="longitude" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].ExternalColumns[latitude]"
+                      dataType="r8"
+                      name="latitude" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[id]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[location_description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[location_description]"
+                      name="location_description" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[location_accuracy]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[location_accuracy]"
+                      name="location_accuracy" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[country_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[country_name]"
+                      name="country_name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[admin_division_name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[admin_division_name]"
+                      name="admin_division_name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[admin_division_population]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[admin_division_population]"
+                      name="admin_division_population" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[longitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[longitude]"
+                      name="longitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[latitude]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[latitude]"
+                      name="latitude" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\time"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination.;Microsoft Corporation; Microsoft SQL Server; © Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads data into an ADO.NET-compliant database that uses a database table or view. Load data into a new or existing table. For example, use an ADO.NET provider for ODBC to load data into an ODBC destination."
+              name="time"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="The Destination database table name."
+                  expressionType="Notify"
+                  name="TableOrViewName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">"time"</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specify the number of rows per batch. The default is 0 which uses the same size as SSIS internal buffer. "
+                  expressionType="Notify"
+                  name="BatchSize">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out. A value of 0 indicates infinite time-out. "
+                  expressionType="Notify"
+                  name="CommandTimeout">30</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether to use the SqlBulkCopy interface to improve the performance of bulk insert operations. Only certain providers support this interface."
+                  expressionType="Notify"
+                  name="UseBulkInsertWhenPossible">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ADONETDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\time.Connections[IDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb1]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb1]"
+                  description="Managed connection manager"
+                  name="IDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input]"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="ADO NET Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input].Columns[id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="id"
+                      externalMetadataColumnId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input].ExternalColumns[id]"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Output].Columns[id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input].Columns[coverted date]"
+                      cachedDataType="dbDate"
+                      cachedName="coverted date"
+                      externalMetadataColumnId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input].ExternalColumns[date]"
+                      lineageId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Output].Columns[coverted date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input].ExternalColumns[id]"
+                      dataType="i4"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input].ExternalColumns[date]"
+                      dataType="dbTimeStamp"
+                      name="date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\time.Outputs[ADO NET Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="ADO NET Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\time.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\time.Outputs[ADO NET Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\time.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\time.Outputs[ADO NET Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Times"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Times"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Times$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Times.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Times.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Output].Columns[id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Times.Outputs[Excel Source Output].ExternalColumns[id]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Output].Columns[id]"
+                      name="id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Output].Columns[date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Times.Outputs[Excel Source Output].ExternalColumns[date]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Output].Columns[date]"
+                      name="date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Output].ExternalColumns[id]"
+                      dataType="wstr"
+                      length="255"
+                      name="id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Output].ExternalColumns[date]"
+                      dataType="wstr"
+                      length="255"
+                      name="date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[id]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[id]"
+                      name="id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[date]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[date]"
+                      name="date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Times Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Times Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Times Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Times Conversion.Inputs[Data Conversion Input].Columns[date]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="date"
+                      lineageId="Package\Data Flow Task\Times.Outputs[Excel Source Output].Columns[date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Data Flow Task\Times Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Output].Columns[coverted date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Output].Columns[coverted date]"
+                      name="coverted date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Times.Outputs[Excel Source Output].Columns[date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Data Flow Task\Times Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output]"
+              endId="Package\Data Flow Task\time.Inputs[ADO NET Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Data Conversion Output1]"
+              endId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Times Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Times.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output1]"
+              endId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Details.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output2]"
+              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\Locations.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute T-SQL Statement Task"
+      DTS:CreationName="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:Description="Execute T-SQL Statement Task"
+      DTS:DTSID="{11988A8B-D092-45B7-B698-BBC0FE6A971D}"
+      DTS:ExecutableType="Microsoft.DbMaintenanceTSQLExecuteTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute T-SQL Statement Task"
+      DTS:TaskContact="Execute T-SQL Statement Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C8EF9A71-5B97-49F8-931D-513B259BA562}"
+          SQLTask:SqlStatementSource="BEGIN TRANSACTION&#xA;TRUNCATE TABLE dbo.detail&#xA;TRUNCATE TABLE dbo.time&#xA;TRUNCATE TABLE dbo.location&#xA;COMMIT TRANSACTION"
+          SQLTask:ServerVersion="9"
+          SQLTask:ExtendedLogging="True"
+          SQLTask:LocalConnectionForLogging=""
+          SQLTask:TaskName=""
+          SQLTask:IgnoreDatabasesInNotOnlineState="False" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{79C732D1-FA6E-44B3-B26A-2C2C6C280F44}"
+      DTS:From="Package\Execute T-SQL Statement Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="291.5,104.5" />
+        <NodeLayout
+          Size="234,42"
+          Id="Package\Execute T-SQL Statement Task"
+          TopLeft="249.5,15.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="367.75,57.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="105,42"
+          Id="Package\Data Flow Task\detail"
+          TopLeft="503.5,268.5" />
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Data Flow Task\Times Conversion"
+          TopLeft="228.5,169.5" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\Data Flow Task\location"
+          TopLeft="738.5,303.5" />
+        <NodeLayout
+          Size="100,42"
+          Id="Package\Data Flow Task\time"
+          TopLeft="219.5,266.5" />
+        <NodeLayout
+          Size="109,42"
+          Id="Package\Data Flow Task\Times"
+          TopLeft="249.5,89.5" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Data Flow Task\Locations"
+          TopLeft="735.5,93.5" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Data Flow Task\Details"
+          TopLeft="508.5,91.5" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="304,131.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.5,38"
+              Start="0,0"
+              End="8.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
+                  <mssgle:LineSegment
+                    End="4.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.5,19"
+                    Point2="8.5,19"
+                    Point3="8.5,23" />
+                  <mssgle:LineSegment
+                    End="8.5,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="312.5,211.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-43,55"
+              Start="0,0"
+              End="-43,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="-4,27.5" />
+                  <mssgle:LineSegment
+                    End="-39,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-39,27.5"
+                    Point2="-43,27.5"
+                    Point3="-43,31.5" />
+                  <mssgle:LineSegment
+                    End="-43,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output1]"
+          TopLeft="565,133.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,135"
+              Start="0,0"
+              End="-9,127.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,63.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,63.5"
+                    Point2="0,67.5"
+                    Point3="-4,67.5" />
+                  <mssgle:LineSegment
+                    End="-5,67.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,67.5"
+                    Point2="-9,67.5"
+                    Point3="-9,71.5" />
+                  <mssgle:LineSegment
+                    End="-9,127.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="161,42"
+          Id="Package\Data Flow Task\Data Conversion"
+          TopLeft="710,193" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output2]"
+          TopLeft="798.5,135.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-8,57.5"
+              Start="0,0"
+              End="-8,50">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.75"
+                    Point2="0,28.75"
+                    Point3="-4,28.75" />
+                  <mssgle:LineSegment
+                    End="-4,28.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-4,28.75"
+                    Point2="-8,28.75"
+                    Point3="-8,32.75" />
+                  <mssgle:LineSegment
+                    End="-8,50" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
+          TopLeft="793.75,235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,68.5"
+              Start="0,0"
+              End="0,61">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\detail">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\location">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\time">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Times">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Locations">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Details">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
