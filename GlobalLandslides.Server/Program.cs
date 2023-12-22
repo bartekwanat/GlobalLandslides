@@ -1,8 +1,15 @@
+using GlobalLandslides.Server.Models;
+using GlobalLandslides.Server.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddDbContext<LandslidesDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LandslidesDb")));
+builder.Services.AddScoped<LandslideService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
