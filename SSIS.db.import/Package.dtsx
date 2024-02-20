@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="76"
-  DTS:VersionGUID="{A3D91611-A19C-45BB-A460-2F1770DCA40F}">
+  DTS:VersionBuild="78"
+  DTS:VersionGUID="{ADF2A97A-9F89-4B3F-9953-80C86131321B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -354,131 +354,6 @@
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\Data Flow Task\Data Conversion"
-              componentClassID="Microsoft.DataConvert"
-              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Data Conversion"
-              name="Data Conversion"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
-                  name="Data Conversion Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[longitude]"
-                      cachedDataType="r8"
-                      cachedName="longitude"
-                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[longitude]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[latitude]"
-                      cachedDataType="r8"
-                      cachedName="latitude"
-                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input].Columns[admin_division_population]"
-                      cachedDataType="r8"
-                      cachedName="admin_division_population"
-                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]"
-                  exclusionGroup="1"
-                  name="Data Conversion Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of longitude]"
-                      dataType="decimal"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of longitude]"
-                      name="Copy of longitude"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[longitude]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of latitude]"
-                      dataType="decimal"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of latitude]"
-                      name="Copy of latitude"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of admin_division_population]"
-                      dataType="ui4"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of admin_division_population]"
-                      name="Copy of admin_division_population"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.Int32"
-                          description="Specifies the input column used as the source of data for the conversion."
-                          name="SourceInputColumnLineageID">#{Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]}</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Data Conversion Error Output"
-                  synchronousInputId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\Data Flow Task\detail"
               componentClassID="Microsoft.ManagedComponentHost"
@@ -1038,23 +913,23 @@
                       externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_name]"
                       lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_name]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[Copy of longitude]"
-                      cachedDataType="decimal"
-                      cachedName="Copy of longitude"
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[longitude]"
+                      cachedDataType="r8"
+                      cachedName="longitude"
                       externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[longitude]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of longitude]" />
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[longitude]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[Copy of latitude]"
-                      cachedDataType="decimal"
-                      cachedName="Copy of latitude"
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[latitude]"
+                      cachedDataType="r8"
+                      cachedName="latitude"
                       externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[latitude]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of latitude]" />
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[Copy of admin_division_population]"
-                      cachedDataType="ui4"
-                      cachedName="Copy of admin_division_population"
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[admin_division_population]"
+                      cachedDataType="r8"
+                      cachedName="admin_division_population"
                       externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_population]"
-                      lineageId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of admin_division_population]" />
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1669,11 +1544,6 @@
               name="Data Conversion Output"
               startId="Package\Data Flow Task\Times Conversion.Outputs[Data Conversion Output]" />
             <path
-              refId="Package\Data Flow Task.Paths[Data Conversion Output1]"
-              endId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input]"
-              name="Data Conversion Output"
-              startId="Package\Data Flow Task\Data Conversion.Outputs[Data Conversion Output]" />
-            <path
               refId="Package\Data Flow Task.Paths[Excel Source Output]"
               endId="Package\Data Flow Task\Times Conversion.Inputs[Data Conversion Input]"
               name="Excel Source Output"
@@ -1685,7 +1555,7 @@
               startId="Package\Data Flow Task\Details.Outputs[Excel Source Output]" />
             <path
               refId="Package\Data Flow Task.Paths[Excel Source Output2]"
-              endId="Package\Data Flow Task\Data Conversion.Inputs[Data Conversion Input]"
+              endId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input]"
               name="Excel Source Output"
               startId="Package\Data Flow Task\Locations.Outputs[Excel Source Output]" />
           </paths>
@@ -1776,25 +1646,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="105,42"
-          Id="Package\Data Flow Task\detail"
-          TopLeft="503.5,268.5" />
+          Size="117,42"
+          Id="Package\Data Flow Task\location"
+          TopLeft="738.5,303.5" />
+        <NodeLayout
+          Size="109,42"
+          Id="Package\Data Flow Task\Times"
+          TopLeft="249.5,89.5" />
         <NodeLayout
           Size="168,42"
           Id="Package\Data Flow Task\Times Conversion"
           TopLeft="228.5,169.5" />
         <NodeLayout
-          Size="117,42"
-          Id="Package\Data Flow Task\location"
-          TopLeft="738.5,303.5" />
-        <NodeLayout
           Size="100,42"
           Id="Package\Data Flow Task\time"
           TopLeft="219.5,266.5" />
         <NodeLayout
-          Size="109,42"
-          Id="Package\Data Flow Task\Times"
-          TopLeft="249.5,89.5" />
+          Size="105,42"
+          Id="Package\Data Flow Task\detail"
+          TopLeft="503.5,268.5" />
         <NodeLayout
           Size="126,42"
           Id="Package\Data Flow Task\Locations"
@@ -1803,40 +1673,6 @@
           Size="113,42"
           Id="Package\Data Flow Task\Details"
           TopLeft="508.5,91.5" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output]"
-          TopLeft="304,131.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="8.5,38"
-              Start="0,0"
-              End="8.5,30.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,15" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,15"
-                    Point2="0,19"
-                    Point3="4,19" />
-                  <mssgle:LineSegment
-                    End="4.5,19" />
-                  <mssgle:CubicBezierSegment
-                    Point1="4.5,19"
-                    Point2="8.5,19"
-                    Point3="8.5,23" />
-                  <mssgle:LineSegment
-                    End="8.5,30.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Data Conversion Output]"
           TopLeft="312.5,211.5">
@@ -1905,36 +1741,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="161,42"
-          Id="Package\Data Flow Task\Data Conversion"
-          TopLeft="710,193" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output2]"
-          TopLeft="798.5,135.5">
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="304,131.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8,57.5"
+              EndConnector="8.5,38"
               Start="0,0"
-              End="-8,50">
+              End="8.5,30.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.75" />
+                    End="0,15" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,24.75"
-                    Point2="0,28.75"
-                    Point3="-4,28.75" />
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="4,19" />
                   <mssgle:LineSegment
-                    End="-4,28.75" />
+                    End="4.5,19" />
                   <mssgle:CubicBezierSegment
-                    Point1="-4,28.75"
-                    Point2="-8,28.75"
-                    Point3="-8,32.75" />
+                    Point1="4.5,19"
+                    Point2="8.5,19"
+                    Point3="8.5,23" />
                   <mssgle:LineSegment
-                    End="-8,50" />
+                    End="8.5,30.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1944,19 +1776,19 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output1]"
-          TopLeft="793.75,235">
+          Id="Package\Data Flow Task.Paths[Excel Source Output2]"
+          TopLeft="797.75,135.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,68.5"
+              EndConnector="0,168"
               Start="0,0"
-              End="0,61">
+              End="0,160.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,61" />
+                    End="0,160.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1969,23 +1801,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\detail">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\location">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\time">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2002,6 +1818,22 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\time">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\detail">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
