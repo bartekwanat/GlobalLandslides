@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GlobalLandslides.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/landslides")]
     [ApiController]
     public class LandslideController : ControllerBase
     {
