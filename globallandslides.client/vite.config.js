@@ -46,7 +46,7 @@ export default defineConfig({
     },
     server: {
         proxy: {
-            '^/weatherforecast': {
+            '^/landslides': {
                 target: 'https://localhost:7099/',
                 secure: false
             }

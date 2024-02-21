@@ -1,6 +1,7 @@
 ﻿using GlobalLandslides.Server.DTO;
 using GlobalLandslides.Server.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace GlobalLandslides.Server.Services
 {
@@ -18,7 +19,7 @@ namespace GlobalLandslides.Server.Services
             var detail = await _dbContext.Details.FirstOrDefaultAsync(d => d.Id == id);
             if (detail == null)
             {
-                return null; 
+                return null;
             }
 
             var time = await _dbContext.Times.FirstOrDefaultAsync(t => t.Id == id);
@@ -42,16 +43,52 @@ namespace GlobalLandslides.Server.Services
             return landslideInfoDto;
         }
 
-        public async Task<IEnumerable<CoordinatesDto>> GetCoordinatesAsync()
+        public async Task<IEnumerable<CoordinatesDto>> GetCoordinatesAsync(decimal north, decimal south, decimal east, decimal west, int zoomLevel)
         {
-            var locations = await _dbContext.Locations.ToListAsync();
-            var coordinatesList = locations.Select(location => new CoordinatesDto
-            {
-                Latitude = location.Latitude,
-                Longitude = location.Longitude,
-            }).ToList();
+            string[] sizeCriteria = GetSizeCriterias(zoomLevel);
 
-            return coordinatesList;
+
+            var locationsQuery = _dbContext.Locations
+                .Where(l => l.Latitude <= north && l.Latitude >= south && l.Longitude <= east && l.Longitude >= west);
+
+            var detailsQuery = _dbContext.Details
+                .Where(d => sizeCriteria.Contains(d.LandslideSize));
+
+            var joinedData = await locationsQuery
+                .Join(detailsQuery,
+                      location => location.Id,
+                      detail => detail.Id,
+                      (location, detail) => new CoordinatesDto
+                      {
+                          Latitude = location.Latitude,
+                          Longitude = location.Longitude,
+                         
+                      })
+                .ToListAsync();
+
+            return joinedData;
+        }
+
+        private string[] GetSizeCriterias(int zoomLevel)
+        {
+            List<string> sizeCriteria = new List<string>{ "catastrophic", "very_large" };
+
+            
+            if (zoomLevel >= 5)
+            {
+                sizeCriteria.Add("large");
+            }
+            if (zoomLevel >= 6)
+            {
+                sizeCriteria.Add("medium");
+            }
+            if (zoomLevel > 8)
+            {
+                sizeCriteria.AddRange(new[] { "small", "unknown" });
+            }
+
+            return sizeCriteria.ToArray();
+
         }
     }
 }
