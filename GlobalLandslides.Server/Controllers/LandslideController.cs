@@ -28,9 +28,9 @@ namespace GlobalLandslides.Server.Controllers
         }
 
         [HttpGet("coordinates")]
-        public async Task<ActionResult<CoordinatesDto>> GetAllCoordinates ()
+        public async Task<ActionResult<IEnumerable<CoordinatesDto>>> GetAllCoordinates([FromQuery] decimal north, [FromQuery] decimal south, [FromQuery] decimal east, [FromQuery] decimal west, [FromQuery] int zoomLevel)
         {
-            var coordinates = await _landslideService.GetCoordinatesAsync();
+            var coordinates = await _landslideService.GetCoordinatesAsync(north, south, east, west, zoomLevel);
             if (coordinates == null)
             {
                 return NotFound();
@@ -39,5 +39,5 @@ namespace GlobalLandslides.Server.Controllers
             return Ok(coordinates);
         }
     }
-    
+
 }

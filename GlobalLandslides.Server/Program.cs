@@ -14,6 +14,14 @@ builder.Services.AddScoped<LandslideService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontendService",
+        builder => builder.WithOrigins("https://localhost:5173")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
@@ -29,6 +37,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors("AllowFrontendService");
 
 app.MapControllers();
 
