@@ -44,29 +44,49 @@ namespace GlobalLandslides.Server.Services
         }
 
         public async Task<IEnumerable<CoordinatesDto>> GetCoordinatesAsync(decimal north, decimal south, decimal east, decimal west, int zoomLevel)
-        {
+        {   IQueryable<Location> locationsQuery = null;
             string[] sizeCriteria = GetSizeCriterias(zoomLevel);
 
-
-            var locationsQuery = _dbContext.Locations
-                .Where(l => l.Latitude <= north && l.Latitude >= south && l.Longitude <= east && l.Longitude >= west);
-
+            if (zoomLevel > 4)
+            {
+                locationsQuery = _dbContext.Locations
+                    .Where(l => l.Latitude <= north && l.Latitude >= south && l.Longitude <= east && l.Longitude >= west);
+            }
             var detailsQuery = _dbContext.Details
                 .Where(d => sizeCriteria.Contains(d.LandslideSize));
 
-            var joinedData = await locationsQuery
-                .Join(detailsQuery,
-                      location => location.Id,
-                      detail => detail.Id,
-                      (location, detail) => new CoordinatesDto
-                      {
-                          Latitude = location.Latitude,
-                          Longitude = location.Longitude,
-                         
-                      })
-                .ToListAsync();
+            if (locationsQuery != null)
+            {
 
-            return joinedData;
+                return await locationsQuery
+                    .Join(detailsQuery,
+                          location => location.Id,
+                          detail => detail.Id,
+                          (location, detail) => new CoordinatesDto
+                          {
+                              Id = location.Id,
+                              Latitude = location.Latitude,
+                              Longitude = location.Longitude,
+                              LandslideSize = detail.LandslideSize
+
+                          })
+                    .ToListAsync();
+            } else
+            {
+                return await _dbContext.Locations
+                    .Join(detailsQuery,
+                          location => location.Id,
+                          detail => detail.Id,
+                          (location, detail) => new CoordinatesDto
+                          {
+                              Id = location.Id,
+                              Latitude = location.Latitude,
+                              Longitude = location.Longitude,
+                              LandslideSize = detail.LandslideSize
+
+                          })
+                    .ToListAsync();
+            }
         }
 
         private string[] GetSizeCriterias(int zoomLevel)

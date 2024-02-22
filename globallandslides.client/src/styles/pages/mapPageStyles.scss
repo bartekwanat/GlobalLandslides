@@ -1,0 +1,51 @@
+
+.mapPageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+.mapWrapper {
+    height: 100vh;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+&.searchVisible {
+        width: 60vw;
+    }
+}
+
+.mapHeader {
+    position: fixed;
+    top: 0;
+}
+
+.searchButton {
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    right: 0;
+}
+
+.searchWrapper {
+    display: flex;
+    width: 25vw;
+    max-width: 500px;
+    height: 70vh;
+    text-align: center;
+    justify-content: center;
+    align-self: center;
+    justify-items: center;
+    color: rgba(255, 255, 255, 0.8);
+    border-radius: 30px;
+    transition: transform 0.5s ease-in-out;
+
+&.active {
+        transform: translateX(0);
+    }
+}
