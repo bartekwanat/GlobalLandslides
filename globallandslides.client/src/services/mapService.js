@@ -1,12 +1,30 @@
-export const fetchLandslideCoordinates = async (bounds, zoom) => {
-    if (!bounds || !bounds._northEast || !bounds._southWest) {
-        console.error('Bounds are undefined or incomplete');
-        return [];
-    }
+export async function fetchLandslideCoordinates(bounds, zoomLevel) {
+    const url = new URL('https://localhost:7099/api/landslides/coordinates');
+    const params = {
+        north: bounds.getNorth(),
+        south: bounds.getSouth(),
+        east: bounds.getEast(),
+        west: bounds.getWest(),
+        zoomLevel: zoomLevel
+    };
 
-    const {_northEast, _southWest} = bounds;
+    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
+
     try {
-        const response = await fetch(`https://localhost:7099/api/landslides/coordinates?north=${_northEast.lat}&south=${_southWest.lat}&east=${_northEast.lng}&west=${_southWest.lng}&zoomLevel=${zoom}`);
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Could not fetch landslide coordinates:", error);
+        throw error;
+    }
+}
+
+export const fetchLandslideDetails = async(landslideId) => {
+    try {
+        const response = await fetch(`https://localhost:7099/api/landslides/${landslideId}`);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
