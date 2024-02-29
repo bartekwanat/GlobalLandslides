@@ -1,41 +1,41 @@
 
 .mapPageWrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100vw;
 }
 
 .mapWrapper {
     height: 100vh;
-    width: 60vw;
+    width: 55vw;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+    align-items: flex-start;
+    justify-content: center;
 
-&.searchVisible {
-        width: 60vw;
-    }
 }
 
-.mapHeader {
-    position: fixed;
+.appHeader {
+    position: absolute;
     top: 0;
+    left: 0;
+    text-align: left;
+    font-weight: lighter;
+    margin: 0;
+    padding:  2px 0 2px 2vw ;
+    height: 2rem;
+    width: 100vw;
+    //background-color: #242424;
+    color: #242424;
+
 }
 
-.searchButton {
-    display: flex;
-    align-items: center;
-    height: 100vh;
-    position: fixed;
-    right: 0;
-}
 
 .searchWrapper {
     display: flex;
     width: 25vw;
-    max-width: 500px;
+    max-width: 400px;
     height: 70vh;
     text-align: center;
     justify-content: center;
@@ -43,9 +43,4 @@
     justify-items: center;
     color: rgba(255, 255, 255, 0.8);
     border-radius: 30px;
-    transition: transform 0.5s ease-in-out;
-
-&.active {
-        transform: translateX(0);
-    }
 }

@@ -1,29 +1,38 @@
 import { useState } from 'react';
 import DynamicMarkersMap from "@/components/DynamicMarkersMap.jsx";
 import '@/styles/pages/mapPageStyles.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import LandslideFilterForm from "@/components/LandslideFilterForm.jsx";
+import LandslideFilterForm from "@/components/LandslideForm.jsx";
 
 const MapPage = () => {
-    const [isSearchVisible, setIsSearchVisible] = useState(false);
+const [filters, setFilters] = useState({
+        categories: [],
+        triggers: [],
+        fatalityComparisonType: "equal",
+        fatalityValue: {
+            minOrSingleValue: '',
+            max: ''
+        },
+        injuryComparisonType: "equal",
+        injuryValue: {
+            minOrSingleValue: '',
+            max: ''
+        },
+        hasPhoto: false,
+});
 
-    const toggleSearch = () => setIsSearchVisible(!isSearchVisible);
+    const handleFilterChange = (newFilters) => {
+        setFilters(newFilters);
+    };
 
     return (
         <div className="mapPageWrapper">
-            <div className={`mapWrapper ${isSearchVisible ? 'searchVisible' : ''}`}>
-                <h1 className="mapHeader">Landslides map</h1>
-                <DynamicMarkersMap />
+            <h2 className={'appHeader'}>Global landslide analysis application</h2>
+            <div className={`mapWrapper`}>
+                <DynamicMarkersMap filters = {filters}/>
             </div>
-            <button onClick={toggleSearch} className="searchButton">
-                <FontAwesomeIcon icon={faSearch} />
-            </button>
-            {isSearchVisible && (
-                <div className={`searchWrapper ${isSearchVisible ? 'active' : ''}`}>
-                    <LandslideFilterForm />
+                <div className={`searchWrapper`}>
+                    <LandslideFilterForm onFiltersChange={handleFilterChange}/>
                 </div>
-            )}
         </div>
     );
 }

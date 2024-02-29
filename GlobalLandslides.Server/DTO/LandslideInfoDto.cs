@@ -17,6 +17,7 @@
 
         // Location
         public string? LocationDescription { get; set; }
+        public string? CountryName {  get; set; }
 
     }
 }
