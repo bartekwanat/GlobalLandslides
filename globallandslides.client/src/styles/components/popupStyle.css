@@ -1,0 +1,4 @@
+.details-popup .leaflet-popup-content {
+    max-height: 500px !important;
+    overflow-y: auto !important;
+}

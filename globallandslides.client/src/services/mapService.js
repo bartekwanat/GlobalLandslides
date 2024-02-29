@@ -1,20 +1,28 @@
-export async function fetchLandslideCoordinates(bounds, zoomLevel) {
+export async function fetchLandslideCoordinates(bounds, zoomLevel, filters ={}) {
+
     const url = new URL('https://localhost:7099/api/landslides/coordinates');
     const params = {
-        north: bounds.getNorth(),
-        south: bounds.getSouth(),
-        east: bounds.getEast(),
-        west: bounds.getWest(),
-        zoomLevel: zoomLevel
+        north: bounds.north,
+        south: bounds.south,
+        east: bounds.east,
+        west: bounds.west,
+        zoomLevel: zoomLevel,
+        filters: filters
     };
-
-    Object.keys(params).forEach(key => url.searchParams.append(key, params[key]));
-
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify(params)
+        });
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         return await response.json();
     } catch (error) {
         console.error("Could not fetch landslide coordinates:", error);

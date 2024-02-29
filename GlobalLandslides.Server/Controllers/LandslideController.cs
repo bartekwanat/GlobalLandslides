@@ -1,6 +1,8 @@
 ﻿using GlobalLandslides.Server.DTO;
+using GlobalLandslides.Server.Models;
 using GlobalLandslides.Server.Services;
 using Microsoft.AspNetCore.Mvc;
+using static GlobalLandslides.Server.Models.CoordinatesRequest;
 
 namespace GlobalLandslides.Server.Controllers
 {
@@ -27,17 +29,19 @@ namespace GlobalLandslides.Server.Controllers
             return Ok(landslideInfo);
         }
 
-        [HttpGet("coordinates")]
-        public async Task<ActionResult<IEnumerable<CoordinatesDto>>> GetAllCoordinates([FromQuery] decimal north, [FromQuery] decimal south, [FromQuery] decimal east, [FromQuery] decimal west, [FromQuery] int zoomLevel)
+        [HttpPost("coordinates")]
+        public async Task<IActionResult> GetCoordinatesAsync([FromBody] CoordinatesRequest request)
         {
-            var coordinates = await _landslideService.GetCoordinatesAsync(north, south, east, west, zoomLevel);
-            if (coordinates == null)
             {
-                return NotFound();
+                var coordinates = await _landslideService.GetCoordinatesAsync(request);
+                if (coordinates == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(coordinates);
             }
-
-            return Ok(coordinates);
         }
-    }
 
+    }
 }
