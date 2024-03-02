@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import DynamicMarkersMap from "@/components/DynamicMarkersMap.jsx";
+
 import '@/styles/pages/mapPageStyles.scss';
 import LandslideFilterForm from "@/components/LandslideForm.jsx";
+import DynamicMarkersMap from "@/components/DynamicMarkersMap.jsx";
 
 const MapPage = () => {
 const [filters, setFilters] = useState({
