@@ -44,7 +44,7 @@ const LandslideForm = ({ onFiltersChange }) => {
         };
 
         onFiltersChange(formParams);
-    }, [selectedCategories, selectedTriggers, fatalityComparisonType, fatalityValue, injuryComparisonType, injuryValue, hasPhoto, onFiltersChange]);
+    }, [selectedCategories, selectedTriggers, fatalityComparisonType, fatalityValue, injuryComparisonType, injuryValue, hasPhoto]);
 
 
 

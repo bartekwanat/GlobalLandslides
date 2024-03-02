@@ -15,16 +15,21 @@ const MapEvents = ({ onBoundsChange, onPopupClose, mapRef }) => {
     mapRef.current = map;
 
     useEffect(() => {
-        onBoundsChange(map.getBounds(), map.getZoom());
-        const handlePopupClose = () => onPopupClose();
-        map.on('popupclose', handlePopupClose);
-        return () => map.off('popupclose', handlePopupClose);
-    }, [onBoundsChange, map, onPopupClose]);
+        const handleChange = () => {
+            onBoundsChange(map.getBounds(), map.getZoom());
+        };
 
-    useMapEvents({
-        moveend: () => onBoundsChange(map.getBounds(), map.getZoom()),
-        zoomend: () => onBoundsChange(map.getBounds(), map.getZoom()),
-    });
+        map.on('popupclose', onPopupClose);
+
+        map.on('moveend', handleChange);
+        map.on('zoomend', handleChange);
+
+        return () => {
+            map.off('popupclose', onPopupClose);
+            map.off('moveend', handleChange);
+            map.off('zoomend', handleChange);
+        };
+    }, [map, onBoundsChange, onPopupClose]);
 
     return null;
 };
@@ -38,6 +43,7 @@ const DynamicMarkersMap = ({ filters }) => {
     const mapRef = useRef(null);
     const popupRef = useRef(null);
     const lastFiltersRef = useRef();
+    const lastBounds = useSelector(state => state.bounds);
 
     const onPopupClose = () => setSelectedLandslideId(null);
 
@@ -67,12 +73,14 @@ const DynamicMarkersMap = ({ filters }) => {
             };
 
             try {
-                const data = await fetchLandslideCoordinates(currentBounds, zoom, filters);
-                landslidesCacheRef.current[boundsKey] = data;
-                setMarkers(data);
-                dispatch(setBounds(currentBounds));
-                dispatch(setResultCount(data.length));
-                lastFiltersRef.current = filtersString;
+                if (currentBounds != lastBounds) {
+                    const data = await fetchLandslideCoordinates(currentBounds, zoom, filters);
+                    landslidesCacheRef.current[boundsKey] = data;
+                    setMarkers(data);
+                    dispatch(setBounds(currentBounds));
+                    dispatch(setResultCount(data.length));
+                    lastFiltersRef.current = filtersString;
+                }
             } catch (error) {
                 console.error("Error fetching landslide coordinates:", error);
             }
@@ -82,16 +90,12 @@ const DynamicMarkersMap = ({ filters }) => {
     useEffect(() => {
         const currentBounds = mapRef.current ? mapRef.current.getBounds() : null;
         const currentZoom = mapRef.current ? mapRef.current.getZoom() : null;
-        if (currentBounds && currentZoom) {
+
+        if (lastBounds && currentZoom) {
             handleBoundsChange(currentBounds, currentZoom);
         }
-    }, [filters, handleBoundsChange]);
+    }, [filters]);
 
-    useEffect(() => {
-        if (mapRef.current) {
-            handleBoundsChange(mapRef.current.getBounds(), mapRef.current.getZoom());
-        }
-    }, [filters, handleBoundsChange]);
 
     return (
         <MapContainer
@@ -108,7 +112,6 @@ const DynamicMarkersMap = ({ filters }) => {
                 mapRef.current = map;
                 handleBoundsChange(map.getBounds(), map.getZoom());
                 map.on('popupclose', () => {
-                    console.log('Popup closed');
                     setSelectedLandslideId(null);
                 });
             }}
@@ -135,10 +138,7 @@ const DynamicMarkersMap = ({ filters }) => {
                         <Popup
                             ref={popupRef}
                             autoClose={false}
-                            className={'details-popup'}
-                            onOpen={() => console.log('open')}
-                            onClose={() => console.log('close')}
-                                >
+                            className={'details-popup'}>
                             <div>
                                 <h2>Details</h2>
                                 <p>Date: {selectedLandslideDetails?.date}</p>
