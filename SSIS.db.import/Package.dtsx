@@ -11,8 +11,8 @@
   DTS:LocaleID="1045"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="78"
-  DTS:VersionGUID="{ADF2A97A-9F89-4B3F-9953-80C86131321B}">
+  DTS:VersionBuild="93"
+  DTS:VersionGUID="{2AD27E7E-DE68-45AB-AE31-4F585A744D86}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -24,6 +24,16 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Data Source=DESKTOP-43FVI29;Initial Catalog=LandslidesDb;Integrated Security=True;Encrypt=False;Application Name=SSIS-Package-{C8EF9A71-5B97-49F8-931D-513B259BA562}DESKTOP-43FVI29.LandslidesDb1;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-43FVI29.LandslidesDb2]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{6FC8C9AE-7139-407C-BD34-8DB33268EC25}"
+      DTS:ObjectName="DESKTOP-43FVI29.LandslidesDb2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-43FVI29;Initial Catalog=LandslidesDb;Integrated Security=True;Trust Server Certificate=True;Application Name=SSIS-Package-{6FC8C9AE-7139-407C-BD34-8DB33268EC25}DESKTOP-43FVI29.LandslidesDb2;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -399,7 +409,7 @@
               <inputs>
                 <input
                   refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input]"
-                  errorRowDisposition="FailComponent"
+                  errorRowDisposition="RedirectRow"
                   hasSideEffects="true"
                   name="ADO NET Destination Input">
                   <inputColumns>
@@ -518,7 +528,7 @@
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\detail.Inputs[ADO NET Destination Input].ExternalColumns[photo_link]"
                       dataType="wstr"
-                      length="255"
+                      length="2000"
                       name="photo_link" />
                   </externalMetadataColumns>
                 </input>
@@ -756,6 +766,18 @@
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
                       refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[id]"
                       dataType="r8"
                       lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[id]"
@@ -812,18 +834,6 @@
                       length="255"
                       lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[photo_link]"
                       name="photo_link" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Data Flow Task\Details.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
@@ -913,6 +923,12 @@
                       externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_name]"
                       lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_name]" />
                     <inputColumn
+                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[admin_division_population]"
+                      cachedDataType="r8"
+                      cachedName="admin_division_population"
+                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_population]"
+                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]" />
+                    <inputColumn
                       refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[longitude]"
                       cachedDataType="r8"
                       cachedName="longitude"
@@ -924,12 +940,6 @@
                       cachedName="latitude"
                       externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[latitude]"
                       lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[latitude]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].Columns[admin_division_population]"
-                      cachedDataType="r8"
-                      cachedName="admin_division_population"
-                      externalMetadataColumnId="Package\Data Flow Task\location.Inputs[ADO NET Destination Input].ExternalColumns[admin_division_population]"
-                      lineageId="Package\Data Flow Task\Locations.Outputs[Excel Source Output].Columns[admin_division_population]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1646,59 +1656,47 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="117,42"
-          Id="Package\Data Flow Task\location"
-          TopLeft="738.5,303.5" />
-        <NodeLayout
-          Size="109,42"
-          Id="Package\Data Flow Task\Times"
-          TopLeft="249.5,89.5" />
+          Size="113,42"
+          Id="Package\Data Flow Task\Details"
+          TopLeft="508.5,91.5" />
         <NodeLayout
           Size="168,42"
           Id="Package\Data Flow Task\Times Conversion"
           TopLeft="228.5,169.5" />
         <NodeLayout
+          Size="109,42"
+          Id="Package\Data Flow Task\Times"
+          TopLeft="249.5,89.5" />
+        <NodeLayout
+          Size="117,42"
+          Id="Package\Data Flow Task\location"
+          TopLeft="738.5,302.5" />
+        <NodeLayout
           Size="100,42"
           Id="Package\Data Flow Task\time"
-          TopLeft="219.5,266.5" />
+          TopLeft="217.5,265.5" />
         <NodeLayout
           Size="105,42"
           Id="Package\Data Flow Task\detail"
-          TopLeft="503.5,268.5" />
+          TopLeft="504.5,267.5" />
         <NodeLayout
           Size="126,42"
           Id="Package\Data Flow Task\Locations"
           TopLeft="735.5,93.5" />
-        <NodeLayout
-          Size="113,42"
-          Id="Package\Data Flow Task\Details"
-          TopLeft="508.5,91.5" />
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
-          TopLeft="312.5,211.5">
+          Id="Package\Data Flow Task.Paths[Excel Source Output2]"
+          TopLeft="797.75,135.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-43,55"
+              EndConnector="0,167"
               Start="0,0"
-              End="-43,47.5">
+              End="0,159.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,23.5"
-                    Point2="0,27.5"
-                    Point3="-4,27.5" />
-                  <mssgle:LineSegment
-                    End="-39,27.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-39,27.5"
-                    Point2="-43,27.5"
-                    Point3="-43,31.5" />
-                  <mssgle:LineSegment
-                    End="-43,47.5" />
+                    End="0,159.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1713,26 +1711,26 @@
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-9,135"
+              EndConnector="-8,134"
               Start="0,0"
-              End="-9,127.5">
+              End="-8,126.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.5" />
+                    End="0,63" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,63.5"
-                    Point2="0,67.5"
-                    Point3="-4,67.5" />
+                    Point1="0,63"
+                    Point2="0,67"
+                    Point3="-4,67" />
                   <mssgle:LineSegment
-                    End="-5,67.5" />
+                    End="-4,67" />
                   <mssgle:CubicBezierSegment
-                    Point1="-5,67.5"
-                    Point2="-9,67.5"
-                    Point3="-9,71.5" />
+                    Point1="-4,67"
+                    Point2="-8,67"
+                    Point3="-8,71" />
                   <mssgle:LineSegment
-                    End="-9,127.5" />
+                    End="-8,126.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1776,19 +1774,31 @@
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output2]"
-          TopLeft="797.75,135.5">
+          Id="Package\Data Flow Task.Paths[Data Conversion Output]"
+          TopLeft="312.5,211.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,168"
+              EndConnector="-45,54"
               Start="0,0"
-              End="0,160.5">
+              End="-45,46.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,160.5" />
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="-4,27" />
+                  <mssgle:LineSegment
+                    End="-41,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-41,27"
+                    Point2="-45,27"
+                    Point3="-45,31" />
+                  <mssgle:LineSegment
+                    End="-45,46.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1801,10 +1811,15 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\location">
+    design-time-name="Package\Data Flow Task\Details">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1818,6 +1833,14 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\location">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
       </Property>
     </Properties>
   </PipelineComponentMetadata>
@@ -1839,19 +1862,6 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Data Flow Task\Locations">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Details">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

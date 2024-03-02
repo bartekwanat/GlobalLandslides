@@ -21,12 +21,8 @@ namespace GlobalLandslides.Server.Controllers
         public async Task<ActionResult<LandslideInfoDto>> GetLandslideInfo(int id)
         {
             var landslideInfo = await _landslideService.GetLandslideInfoAsync(id);
-            if (landslideInfo == null)
-            {
-                return NotFound();
-            }
 
-            return Ok(landslideInfo);
+            return landslideInfo == null ? NotFound() : Ok(landslideInfo);
         }
 
         [HttpPost("coordinates")]
@@ -34,14 +30,19 @@ namespace GlobalLandslides.Server.Controllers
         {
             {
                 var coordinates = await _landslideService.GetCoordinatesAsync(request);
-                if (coordinates == null)
-                {
-                    return NotFound();
-                }
 
-                return Ok(coordinates);
+                return coordinates == null ? NotFound() : Ok(coordinates);
             }
         }
+
+        [HttpGet("chart")]
+        public async Task<IActionResult> GetChartDataAsync(string x, string y)
+        {
+            var data = await _landslideService.GetChartDataAsync(x,y);
+             
+            return data == null ? NotFound() : Ok(data);
+        }
+            
 
     }
 }

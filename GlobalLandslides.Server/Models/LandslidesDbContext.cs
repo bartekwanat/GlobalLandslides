@@ -60,7 +60,7 @@ public partial class LandslidesDbContext : DbContext
                 .HasMaxLength(255)
                 .HasColumnName("landslide_trigger");
             entity.Property(e => e.PhotoLink)
-                .HasMaxLength(255)
+                .HasMaxLength(2000)
                 .HasColumnName("photo_link");
             entity.Property(e => e.StormName)
                 .HasMaxLength(255)

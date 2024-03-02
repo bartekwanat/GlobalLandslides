@@ -83,7 +83,7 @@ const LandslideForm = ({ onFiltersChange }) => {
                 </Grid>
                 {resultCount > 0 && (
                     <Grid item xs={12}
-                    style={{color: '#242424'}}>
+                    style={{color: '#eee'}}>
                         <p>{areFiltersDefault() ? 'Actually rendered results:' : 'Filtering returned: '} {resultCount} results</p>
                         {resultCount > 1000 && <p style={{fontSize: '0.8rem'}}>Large number of markers can slow down the application</p>}
                     </Grid>
