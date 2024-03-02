@@ -1,6 +1,7 @@
 ﻿using GlobalLandslides.Server.DTO;
 using GlobalLandslides.Server.Models;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 
 
@@ -74,8 +75,46 @@ namespace GlobalLandslides.Server.Services
             return result;
         }
 
-        //private methods
+        public async Task<IDictionary<string, int>> GetChartDataAsync(string x, string y)
+        {
+            var result = new Dictionary<string, int>();
 
+            IQueryable<IGrouping<string, Detail>> groupedQuery;
+
+            switch (x)
+            {
+                case "categories":
+                    groupedQuery = _dbContext.Details.GroupBy(detail => detail.LandslideCategory);
+                    break;
+                case "triggers":
+                    groupedQuery = _dbContext.Details.GroupBy(detail => detail.LandslideTrigger);
+                    break;
+                default:
+                    throw new ArgumentException("Unknown X value", nameof(x));
+            }
+
+            if (y == "fatalityCount")
+            {
+                result = await groupedQuery
+                    .Select(group => new { group.Key, Sum = group.Sum(detail => detail.FatalityCount.Value) })
+                    .ToDictionaryAsync(k => k.Key, v => v.Sum);
+            }
+            else if (y == "injuryCount")
+            {
+                result = await groupedQuery
+                    .Select(group => new { group.Key, Sum = group.Sum(detail => detail.InjuryCount.Value) })
+                    .ToDictionaryAsync(k => k.Key, v => v.Sum);
+            }
+            else
+            {
+                throw new ArgumentException("Unknown Y value", nameof(y));
+            }
+
+            return result;
+        }
+
+        //private methods
+        
         private IQueryable<LocationDetail> ApplyZoomLevelFilter(IQueryable<LocationDetail> query, CoordinatesRequest request)
         {
             Filters filters = request.Filters;

@@ -27,7 +27,6 @@ const [filters, setFilters] = useState({
 
     return (
         <div className="mapPageWrapper">
-            <h2 className={'appHeader'}>Global landslide analysis application</h2>
             <div className={`mapWrapper`}>
                 <DynamicMarkersMap filters = {filters}/>
             </div>
