@@ -7,3 +7,7 @@ React
 SQL Server/Azure SQL Server
 Azure Synapse Analytics
 Project developed for engineering thesis.
+
+
+https://github.com/bartekwanat/GlobalLandslides/assets/61335440/dfb2832a-bcf9-4ffa-a8b3-a3cd70476080
+
